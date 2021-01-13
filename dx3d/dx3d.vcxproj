@@ -155,6 +155,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DX11Main.cpp" />
+    <ClCompile Include="NirException.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NirException.h" />
+    <ClInclude Include="NirWin.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DX11Tutorial.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="chili.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
