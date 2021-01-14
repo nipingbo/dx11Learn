@@ -1,6 +1,7 @@
 #pragma once
 #include "NirWin.h"
 #include "NirException.h"
+#include "Keyboard.h"
 class Window
 {
 public:
@@ -43,6 +44,9 @@ private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 	static LRESULT CALLBACK HandleMsgThunk(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 	LRESULT HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
+//keyboard member
+public:
+	Keyboard kbd;
 private:
 	int width;
 	int height;

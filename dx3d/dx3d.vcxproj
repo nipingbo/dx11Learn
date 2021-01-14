@@ -155,10 +155,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DX11Main.cpp" />
+    <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="NirException.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Keyboard.h" />
     <ClInclude Include="NirException.h" />
     <ClInclude Include="NirWin.h" />
     <ClInclude Include="resource.h" />
