@@ -3,9 +3,9 @@
 class GameTimer
 {
 public:
-	GameTimer();
-	float Mark();
-	float Peek() const;
+	GameTimer() noexcept;
+	float Mark() noexcept;
+	float Peek() const noexcept;
 private:
 	std::chrono::steady_clock::time_point last;
 };

@@ -90,7 +90,7 @@ std::optional<int> Window::ProcessMessages()
 		//check QUIT message
 		if (msg.message == WM_QUIT)
 		{
-			return msg.wParam;
+			return (int)msg.wParam;
 		}
 		//TranslateMessage will post auxilliary WM_CHAR messages from key msgs
 		TranslateMessage(&msg);
