@@ -2,6 +2,7 @@
 #include "NirWin.h"
 #include "NirException.h"
 #include "Keyboard.h"
+#include "Mouse.h"
 class Window
 {
 public:
@@ -47,6 +48,7 @@ private:
 //keyboard member
 public:
 	Keyboard kbd;
+	Mouse mouse;
 private:
 	int width;
 	int height;
