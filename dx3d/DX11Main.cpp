@@ -9,14 +9,22 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0) {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
+			// test code
 			while (!wnd.mouse.IsEmpty())
 			{
 				const auto e = wnd.mouse.Read();
-				if (e.GetType() == Mouse::Event::Type::Move)
+				switch (e.GetType())
+				{
+				case Mouse::Event::Type::Leave:
+					wnd.SetTitle("Gone!");
+					break;
+				case Mouse::Event::Type::Move:
 				{
 					std::ostringstream oss;
-					oss << "Mouse Position: (" << e.GetPosX() << "," << e.GetPosY() << ")";
+					oss << "Mouse moved to (" << e.GetPosX() << "," << e.GetPosY() << ")";
 					wnd.SetTitle(oss.str());
+				}
+				break;
 				}
 			}
 		}
