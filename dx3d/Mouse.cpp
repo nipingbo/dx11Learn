@@ -26,7 +26,7 @@ bool Mouse::RightIsPressed() const noexcept
 
 Mouse::Event Mouse::Read() noexcept
 {
-	if (buffer.size() > 0)
+	if (buffer.size() > 0u)
 	{
 		Mouse::Event e = buffer.front();
 		buffer.pop();
@@ -51,8 +51,8 @@ void Mouse::Flush() noexcept
 
 void Mouse::OnMouseMove(int x, int y) noexcept
 {
-	x = x;
-	y = y;
+	this->x = x;
+	this->y = y;
 	buffer.push(Mouse::Event(Mouse::Event::Type::Move, *this));
 	TrimBuffer();
 }
