@@ -9,19 +9,16 @@ App::App()
 
 int App::Go()
 {
-	MSG msg;
-	BOOL gResult;
-	while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
+	while (true)
 	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
+		// process all messages pending, but to not block for new messages
+		if (const auto ecode = Window::ProcessMessages())
+		{
+			// if return optional has value, means we're quitting so return exit code
+			return *ecode;
+		}
 		DoFrame();
 	}
-	if (gResult == -1)
-	{
-		throw CHWND_LAST_EXCEPT();
-	}
-	return msg.wParam;
 }
 
 void App::DoFrame()
