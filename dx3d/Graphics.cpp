@@ -111,8 +111,6 @@ void Graphics::DrawTestTriangle()
 	{
 		{ 0.0f, 0.5f },
 		{ 0.5f, -0.5f },
-		{ 0.5f, -0.5f },
-		{ -0.5f, -0.5f },
 		{ -0.5f, -0.5f },
 		{ 0.0f, 0.5f },
 	
@@ -188,7 +186,7 @@ void Graphics::DrawTestTriangle()
 	pContext->OMSetRenderTargets(1u, pTarget.GetAddressOf(), nullptr);
 
 	//set primitive topology to triangle list(group of 3 vertices)
-	pContext->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_LINELIST);
+	pContext->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
 
 
 	//config viewport
