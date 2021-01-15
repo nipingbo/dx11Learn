@@ -111,8 +111,10 @@ void Graphics::DrawTestTriangle()
 	{
 		{ 0.0f, 0.5f },
 		{ 0.5f, -0.5f },
+		{ 0.5f, -0.5f },
 		{ -0.5f, -0.5f },
-
+		{ -0.5f, -0.5f },
+		{ 0.0f, 0.5f },
 	
 	};
 	//declare a vertex buffer
