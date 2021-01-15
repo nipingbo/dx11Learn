@@ -114,8 +114,9 @@ void Graphics::DrawTestTriangle()
 	{ -0.5f, -0.5f }
 
 	};
-
+	//declare a vertex buffer
 	wrl::ComPtr<ID3D11Buffer> pVertexBuffer;
+	//describe what kind of buffer
 	D3D11_BUFFER_DESC bd = {};
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	bd.Usage = D3D11_USAGE_DEFAULT;
@@ -123,8 +124,10 @@ void Graphics::DrawTestTriangle()
 	bd.MiscFlags = 0u;
 	bd.ByteWidth = sizeof(vertices);
 	bd.StructureByteStride = sizeof(Vertex);
+	//specify data for initializing a subresources
 	D3D11_SUBRESOURCE_DATA sd = {};
 	sd.pSysMem = vertices;
+	//create the vertex buffer here
 	GFX_THROW_INFO(pDevice->CreateBuffer(&bd, &sd, &pVertexBuffer));
 
 	//bind vertex buffer to pipeline
@@ -155,7 +158,18 @@ void Graphics::DrawTestTriangle()
 	wrl::ComPtr<ID3D11InputLayout> pInputLayout;
 	const D3D11_INPUT_ELEMENT_DESC ied[] =
 	{
-		{"Position",0,DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0}
+						
+		{"Position",							//semanticName in a shader 
+		  0,									//semanticIndex
+		  DXGI_FORMAT_R32G32_FLOAT,				//data type of the element. e.g in our case , our vertex has x and y, and both of them are float. 
+												//so we use "R32G32"
+		  0,									//InputSlot
+		  0,
+		  D3D11_INPUT_PER_VERTEX_DATA,			//Input data is per-vertex data. 
+		  0			
+		}
+		//important member is 1, 2, 3, 4
+
 	};
 	GFX_THROW_INFO(pDevice->CreateInputLayout(
 		ied, (UINT)std::size(ied),
