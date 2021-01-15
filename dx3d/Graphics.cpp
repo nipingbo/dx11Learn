@@ -103,18 +103,25 @@ void Graphics::DrawTestTriangle()
 
 	struct Vertex
 	{
-		float x;
-		float y;
-		float r;
-		float g;
-		float b;
+		struct {
+			float x;
+			float y;
+		}pos;
+		struct {
+			unsigned char r;
+			unsigned char g;
+			unsigned char b;
+			unsigned char a;
+		}color;
+		
+		
 	};
 	//create vertex buffer (A 2D triangle at center of the screen)
 	const Vertex vertices[] =
 	{
-		{ 0.0f, 0.5f, 1.0f, 0.0f, 0.0f },
-		{ 0.5f, -0.5f, 0.0f, 1.0f, 0.0f },
-		{ -0.5f, -0.5f, 0.0f, 0.0f, 1.0f }
+		{ 0.0f, 0.5f, 255, 0, 0, 0 },
+		{ 0.5f, -0.5f, 0, 255, 0 , 0},
+		{ -0.5f, -0.5f, 0, 0, 255 , 0}
 		
 	
 	};
@@ -176,7 +183,7 @@ void Graphics::DrawTestTriangle()
 
 		{"Color",    							//semanticName in a shader 
 		  0,									//semanticIndex
-		  DXGI_FORMAT_R32G32B32_FLOAT,				//data type of the element. e.g in our case , our vertex has x and y, and both of them are float. 
+		  DXGI_FORMAT_R8G8B8A8_UNORM,				//data type of the element. e.g in our case , our vertex has x and y, and both of them are float. 
 												//so we use "R32G32"
 		  0,									//InputSlot
 		  8u,									//previous data is Position and it has two float
