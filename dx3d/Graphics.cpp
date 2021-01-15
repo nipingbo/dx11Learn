@@ -105,14 +105,17 @@ void Graphics::DrawTestTriangle()
 	{
 		float x;
 		float y;
+		float r;
+		float g;
+		float b;
 	};
 	//create vertex buffer (A 2D triangle at center of the screen)
 	const Vertex vertices[] =
 	{
-		{ 0.0f, 0.5f },
-		{ 0.5f, -0.5f },
-		{ -0.5f, -0.5f },
-		{ 0.0f, 0.5f },
+		{ 0.0f, 0.5f, 1.0f, 0.0f, 0.0f },
+		{ 0.5f, -0.5f, 0.0f, 1.0f, 0.0f },
+		{ -0.5f, -0.5f, 0.0f, 0.0f, 1.0f }
+		
 	
 	};
 	//declare a vertex buffer
@@ -168,8 +171,20 @@ void Graphics::DrawTestTriangle()
 		  0,
 		  D3D11_INPUT_PER_VERTEX_DATA,			//Input data is per-vertex data. 
 		  0			
-		}
+		},
 		//important member is 1, 2, 3, 4
+
+		{"Color",    							//semanticName in a shader 
+		  0,									//semanticIndex
+		  DXGI_FORMAT_R32G32B32_FLOAT,				//data type of the element. e.g in our case , our vertex has x and y, and both of them are float. 
+												//so we use "R32G32"
+		  0,									//InputSlot
+		  8u,									//previous data is Position and it has two float
+												//so there are 8 bytes before
+												
+		  D3D11_INPUT_PER_VERTEX_DATA,			//Input data is per-vertex data. 
+		  0
+		}
 
 	};
 	GFX_THROW_INFO(pDevice->CreateInputLayout(
@@ -186,7 +201,7 @@ void Graphics::DrawTestTriangle()
 	pContext->OMSetRenderTargets(1u, pTarget.GetAddressOf(), nullptr);
 
 	//set primitive topology to triangle list(group of 3 vertices)
-	pContext->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
+	pContext->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 
 	//config viewport
